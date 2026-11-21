@@ -10,8 +10,8 @@ Static, responsive StageVerge homepage served with GitHub Pages.
 
 ## Deployment
 
-The workflow in `.github/workflows/pages.yml` deploys the site to GitHub Pages on pushes to `master`.
+The workflow in `.github/workflows/static.yml` deploys the site to GitHub Pages on pushes to `master`.
 
 In the repository's **Settings → Pages**, choose **GitHub Actions** as the build and deployment source. The workflow will publish the site at the repository's GitHub Pages URL.
 
-To use `stageverge.com`, add the custom domain in GitHub Pages settings and configure the required DNS records at the domain provider. HTTPS will be available after DNS verification and certificate provisioning.
+The root `CNAME` file and GitHub Pages settings use `stageverge.com`. The domain's DNS records must also point to GitHub Pages. HTTPS can be enforced after DNS verification and certificate provisioning.
