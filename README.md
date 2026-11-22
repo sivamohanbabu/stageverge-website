@@ -44,6 +44,12 @@ learning outcomes, tools, milestones, and an in-session “My learning” list.
 Connect a project API or content management system to replace the sample demo
 catalog before using it as a production course library.
 
+The Dataset sources section links to [Kaggle Datasets](https://www.kaggle.com/datasets),
+[Hugging Face Datasets](https://huggingface.co/datasets), the [UCI Machine Learning Repository](https://archive.ics.uci.edu/datasets),
+[Google Dataset Search](https://datasetsearch.research.google.com/),
+[OpenML](https://www.openml.org/search?type=data), and [Data.gov](https://data.gov/).
+Check each dataset's license, attribution, and privacy requirements before use.
+
 ## Deployment
 
 The workflow in `.github/workflows/static.yml` builds the Next.js static export

@@ -3483,3 +3483,226 @@ select:focus-visible {
     font-size: 7px;
   }
 }
+
+.dataset-sources {
+  display: grid;
+  gap: 12px;
+  scroll-margin-top: 82px;
+}
+
+.dataset-source-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.dataset-source-heading .overline {
+  margin-bottom: 5px;
+}
+
+.dataset-source-heading h2 {
+  margin: 0 0 4px;
+  color: #e8e8e3;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -0.045em;
+}
+
+.dataset-source-heading p:last-child {
+  margin: 0;
+  color: #85868d;
+  font-size: 9px;
+}
+
+.dataset-source-count {
+  flex: 0 0 auto;
+  margin-bottom: 3px;
+  padding: 5px 7px;
+  border: 1px solid #2e3036;
+  border-radius: 6px;
+  color: #9c9da4;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.dataset-source-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.dataset-source-card {
+  display: flex;
+  min-width: 0;
+  min-height: 120px;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 11px;
+  border: 1px solid #292a30;
+  border-radius: 9px;
+  background:
+    radial-gradient(ellipse at 2% 2%, rgb(211 242 122 / 4%), transparent 58%),
+    #111216;
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease;
+}
+
+.dataset-source-card:hover {
+  transform: translateY(-2px);
+  border-color: #44463a;
+  background:
+    radial-gradient(ellipse at 2% 2%, rgb(211 242 122 / 7%), transparent 62%),
+    #141519;
+}
+
+.dataset-source-mark {
+  display: grid;
+  width: 31px;
+  height: 31px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #373930;
+  border-radius: 8px;
+  background: #1b1d17;
+  color: #c5d395;
+  font-family: "Manrope", sans-serif;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.dataset-mark-1,
+.dataset-mark-4 {
+  border-color: #36313f;
+  background: #1b1921;
+  color: #c0b4e8;
+}
+
+.dataset-mark-2,
+.dataset-mark-5 {
+  border-color: #30383b;
+  background: #171d20;
+  color: #9ec7d0;
+}
+
+.dataset-mark-3 {
+  border-color: #3e342c;
+  background: #211b17;
+  color: #e2b991;
+}
+
+.dataset-source-copy {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.dataset-source-label {
+  color: #85868d;
+  font-size: 6px;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+}
+
+.dataset-source-copy strong {
+  color: #e0e0db;
+  font-family: "Manrope", sans-serif;
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+}
+
+.dataset-source-description {
+  color: #8d8e95;
+  font-size: 7px;
+  line-height: 1.55;
+}
+
+.dataset-source-visit {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 2px;
+  color: #bac68d;
+  font-size: 7px;
+  font-weight: 600;
+}
+
+.dataset-source-visit svg {
+  transition: transform 140ms ease;
+}
+
+.dataset-source-card:hover .dataset-source-visit svg {
+  transform: translateX(2px);
+}
+
+.dataset-source-note {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid #282a2b;
+  border-radius: 7px;
+  background: #101214;
+  color: #8d8e91;
+  font-size: 7px;
+  line-height: 1.5;
+}
+
+.dataset-source-note svg {
+  flex: 0 0 auto;
+  color: #aab487;
+}
+
+@media (max-width: 980px) {
+  .dataset-source-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .dataset-source-heading h2 {
+    font-size: 15px;
+  }
+
+  .dataset-source-heading p:last-child {
+    max-width: 275px;
+    font-size: 8px;
+  }
+
+  .dataset-source-count {
+    font-size: 6px;
+  }
+
+  .dataset-source-grid {
+    gap: 7px;
+  }
+
+  .dataset-source-card {
+    min-height: 116px;
+    gap: 7px;
+    padding: 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dataset-source-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dataset-source-card {
+    min-height: 0;
+    align-items: center;
+  }
+
+  .dataset-source-description {
+    font-size: 8px;
+  }
+}

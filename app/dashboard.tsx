@@ -8,6 +8,7 @@ type IconName =
   | "book"
   | "flask"
   | "layers"
+  | "database"
   | "people"
   | "settings"
   | "search"
@@ -53,6 +54,13 @@ function Icon({
       <>
         <path d="m12 3 9 5-9 5-9-5 9-5Z" />
         <path d="m3 12 9 5 9-5M3 16l9 5 9-5" />
+      </>
+    ),
+    database: (
+      <>
+        <ellipse cx="12" cy="5" rx="8" ry="3" />
+        <path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5" />
+        <path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" />
       </>
     ),
     people: (
@@ -125,6 +133,7 @@ function Icon({
 const navigation: { label: string; id: string; icon: IconName }[] = [
   { label: "Overview", id: "overview", icon: "grid" },
   { label: "Project demos", id: "projects", icon: "layers" },
+  { label: "Dataset sources", id: "datasets", icon: "database" },
   { label: "My learning", id: "learning", icon: "book" },
   { label: "Career labs", id: "labs", icon: "flask" },
   { label: "Community", id: "community", icon: "people" },
@@ -351,6 +360,57 @@ const projectCategories = [
   "Web development",
   "Data & analytics",
   "Product design",
+];
+
+const datasetSources = [
+  {
+    name: "Kaggle Datasets",
+    label: "COMMUNITY DATA",
+    initials: "K",
+    description:
+      "Community-shared datasets for analytics, machine learning, and project practice.",
+    url: "https://www.kaggle.com/datasets",
+  },
+  {
+    name: "Hugging Face Datasets",
+    label: "AI & ML",
+    initials: "HF",
+    description:
+      "Discover ML-ready text, image, audio, document, and tabular datasets.",
+    url: "https://huggingface.co/datasets",
+  },
+  {
+    name: "UCI Machine Learning Repository",
+    label: "RESEARCH DATA",
+    initials: "UCI",
+    description:
+      "A long-running collection of datasets for learning and research.",
+    url: "https://archive.ics.uci.edu/datasets",
+  },
+  {
+    name: "Google Dataset Search",
+    label: "DATA DISCOVERY",
+    initials: "G",
+    description:
+      "Search dataset listings from universities, publishers, and public sources.",
+    url: "https://datasetsearch.research.google.com/",
+  },
+  {
+    name: "OpenML",
+    label: "OPEN SCIENCE",
+    initials: "OML",
+    description:
+      "Find shareable datasets and benchmark tasks for reproducible experiments.",
+    url: "https://www.openml.org/search?type=data",
+  },
+  {
+    name: "Data.gov",
+    label: "PUBLIC DATA",
+    initials: "US",
+    description:
+      "Explore U.S. government open data across topics and agencies.",
+    url: "https://data.gov/",
+  },
 ];
 
 function Brand() {
@@ -807,6 +867,52 @@ export default function Dashboard() {
                     filter.
                   </div>
                 )}
+              </section>
+
+              <section className="dataset-sources" id="datasets">
+                <div className="dataset-source-heading">
+                  <div>
+                    <p className="overline">RESEARCH & OPEN DATA</p>
+                    <h2>Dataset websites for your next build</h2>
+                    <p>
+                      Find public and community datasets to explore new project
+                      ideas.
+                    </p>
+                  </div>
+                  <span className="dataset-source-count">
+                    {datasetSources.length} REFERENCE SITES
+                  </span>
+                </div>
+                <div className="dataset-source-grid">
+                  {datasetSources.map((source, index) => (
+                    <a
+                      className="dataset-source-card"
+                      href={source.url}
+                      key={source.name}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className={`dataset-source-mark dataset-mark-${index}`}>
+                        {source.initials}
+                      </span>
+                      <span className="dataset-source-copy">
+                        <span className="dataset-source-label">{source.label}</span>
+                        <strong>{source.name}</strong>
+                        <span className="dataset-source-description">
+                          {source.description}
+                        </span>
+                        <span className="dataset-source-visit">
+                          Browse datasets <Icon name="arrow" size={13} />
+                        </span>
+                      </span>
+                    </a>
+                  ))}
+                </div>
+                <p className="dataset-source-note">
+                  <Icon name="spark" size={14} />
+                  Always review dataset licensing, attribution, and privacy
+                  requirements before using or sharing data.
+                </p>
               </section>
 
               <section className="learning-section" id="learning">
