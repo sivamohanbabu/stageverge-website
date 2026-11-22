@@ -553,6 +553,127 @@ select:focus-visible {
   gap: 17px;
 }
 
+.world-clock {
+  position: relative;
+}
+
+.world-clock > summary {
+  display: flex;
+  min-width: 88px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 8px;
+  border: 1px solid #292a30;
+  border-radius: 8px;
+  background: #111216;
+  color: #b8c68b;
+  cursor: pointer;
+  list-style: none;
+}
+
+.world-clock > summary::-webkit-details-marker {
+  display: none;
+}
+
+.world-clock > summary time {
+  color: #e2e4d8;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.world-clock > summary span {
+  color: #8d9278;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.world-clock[open] > summary,
+.world-clock > summary:hover {
+  border-color: #4a5036;
+  background: #171813;
+}
+
+.world-clock-popover {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 250px;
+  padding: 13px;
+  border: 1px solid #34362d;
+  border-radius: 11px;
+  background: #111216;
+  box-shadow: 0 18px 48px rgb(0 0 0 / 48%);
+}
+
+.world-clock-heading {
+  display: grid;
+  gap: 3px;
+  padding: 0 2px 9px;
+  border-bottom: 1px solid #28292e;
+}
+
+.world-clock-heading strong {
+  color: #d3f27a;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+
+.world-clock-heading span {
+  overflow: hidden;
+  color: #85868d;
+  font-size: 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.world-clock-list {
+  display: grid;
+}
+
+.world-clock-row {
+  display: flex;
+  min-height: 43px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #222328;
+}
+
+.world-clock-row:last-child {
+  border-bottom: 0;
+}
+
+.world-clock-row > span {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.world-clock-row strong {
+  color: #d9dad4;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.world-clock-row small {
+  overflow: hidden;
+  color: #777880;
+  font-size: 7px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.world-clock-row time {
+  flex: 0 0 auto;
+  color: #d3f27a;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
 .search-field {
   display: flex;
   width: 226px;
@@ -2343,6 +2464,14 @@ select:focus-visible {
     padding-inline: 27px;
   }
 
+  .topbar-actions {
+    gap: 10px;
+  }
+
+  .search-field {
+    width: 180px;
+  }
+
   .dashboard-main {
     padding-right: 27px;
     padding-left: 27px;
@@ -2457,6 +2586,15 @@ select:focus-visible {
 
   .topbar-actions {
     gap: 8px;
+  }
+
+  .world-clock > summary {
+    min-width: 62px;
+    padding: 0 7px;
+  }
+
+  .world-clock > summary span {
+    display: none;
   }
 
   .search-field {

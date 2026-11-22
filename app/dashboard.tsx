@@ -139,6 +139,24 @@ const navigation: { label: string; id: string; icon: IconName }[] = [
   { label: "Community", id: "community", icon: "people" },
 ];
 
+const worldClockCities = [
+  { city: "Local", timeZone: "local" },
+  { city: "UTC", timeZone: "UTC" },
+  { city: "New York", timeZone: "America/New_York" },
+  { city: "London", timeZone: "Europe/London" },
+  { city: "Tokyo", timeZone: "Asia/Tokyo" },
+];
+
+function formatClock(date: Date | null, timeZone: string) {
+  return date
+    ? new Intl.DateTimeFormat("en-GB", {
+        timeZone,
+        hour: "2-digit",
+        minute: "2-digit",
+      }).format(date)
+    : "--:--";
+}
+
 const courses = [
   {
     category: "PRODUCT DESIGN",
@@ -469,6 +487,7 @@ export default function Dashboard() {
   const [supportOpen, setSupportOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [pageProgress, setPageProgress] = useState(0);
+  const [worldClockNow, setWorldClockNow] = useState<Date | null>(null);
   const [startedProjects, setStartedProjects] = useState<string[]>(() =>
     projects.filter((project) => project.progress > 0).map((project) => project.id),
   );
@@ -510,6 +529,13 @@ export default function Dashboard() {
       window.clearTimeout(loadingTimer);
       window.removeEventListener("keydown", focusSearch);
     };
+  }, []);
+
+  useEffect(() => {
+    const updateTime = () => setWorldClockNow(new Date());
+    updateTime();
+    const clockTimer = window.setInterval(updateTime, 15000);
+    return () => window.clearInterval(clockTimer);
   }, []);
 
   useEffect(() => {
@@ -570,6 +596,10 @@ export default function Dashboard() {
       }),
     [projectCategory, search],
   );
+  const localTimeZone =
+    worldClockNow && Intl.DateTimeFormat().resolvedOptions().timeZone
+      ? Intl.DateTimeFormat().resolvedOptions().timeZone
+      : "UTC";
 
   function startProject(projectId: string) {
     setStartedProjects((current) =>
@@ -665,6 +695,36 @@ export default function Dashboard() {
               <Icon name="bell" size={19} />
               <span />
             </button>
+            <details className="world-clock">
+              <summary aria-label="Open world clock">
+                <Icon name="clock" size={15} />
+                <time>{formatClock(worldClockNow, localTimeZone)}</time>
+                <span>LOCAL</span>
+              </summary>
+              <div className="world-clock-popover">
+                <div className="world-clock-heading">
+                  <strong>WORLD CLOCK</strong>
+                  <span>{worldClockNow ? localTimeZone : "Your local time"}</span>
+                </div>
+                <div className="world-clock-list">
+                  {worldClockCities.map((clock) => {
+                    const timeZone =
+                      clock.timeZone === "local" ? localTimeZone : clock.timeZone;
+                    return (
+                      <div className="world-clock-row" key={clock.city}>
+                        <span>
+                          <strong>{clock.city}</strong>
+                          <small>{timeZone}</small>
+                        </span>
+                        <time dateTime={worldClockNow?.toISOString()}>
+                          {formatClock(worldClockNow, timeZone)}
+                        </time>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </details>
           </div>
         </header>
 
