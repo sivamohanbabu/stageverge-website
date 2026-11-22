@@ -354,6 +354,10 @@ const projects: Project[] = [
   },
 ];
 
+const technologyNames = Array.from(
+  new Set(projects.flatMap((project) => project.stack)),
+);
+
 const projectCategories = [
   "All projects",
   "AI & ML",
@@ -661,7 +665,6 @@ export default function Dashboard() {
               <Icon name="bell" size={19} />
               <span />
             </button>
-            <span className="topbar-avatar">AM</span>
           </div>
         </header>
 
@@ -670,10 +673,11 @@ export default function Dashboard() {
             <div>
               <p className="overline">{today || "YOUR LEARNING SPACE"}</p>
               <h1>
-                Good morning, Alex<span className="heading-period">.</span>
+                Build with modern technologies
+                <span className="heading-period">.</span>
               </h1>
               <p className="page-subtitle">
-                A little progress each day adds up to big results.
+                Explore the tools behind AI, web, data, and product projects.
               </p>
             </div>
             <a className="term-pill" href="#community">
@@ -704,10 +708,6 @@ export default function Dashboard() {
                     <span>
                       <Icon name="book" size={15} /> 6 project modules
                     </span>
-                    <span className="meta-divider" />
-                    <span>
-                      <Icon name="clock" size={15} /> 38% complete
-                    </span>
                   </div>
                   <button
                     className="featured-cta"
@@ -716,9 +716,6 @@ export default function Dashboard() {
                   >
                     Explore project demo <Icon name="arrow" size={16} />
                   </button>
-                  <div className="featured-progress">
-                    <span style={{ width: "38%" }} />
-                  </div>
                 </div>
                 <div className="featured-art" aria-hidden="true">
                   <div className="orbit orbit-one" />
@@ -736,48 +733,21 @@ export default function Dashboard() {
                 <span className="featured-index">01 / FEATURED PROJECT DEMO</span>
               </section>
 
-              <section className="stats-grid" aria-label="Learning statistics">
-                <article className="stat-card">
-                  <span className="stat-icon stat-violet">
-                    <Icon name="clock" size={18} />
-                  </span>
-                  <div>
-                    <p>Learning time</p>
-                    <strong>12.5<span> hrs</span></strong>
-                    <span className="stat-caption">
-                      <span className="positive">+2.4 hrs</span> this week
+              <section className="technology-stack" aria-labelledby="technology-stack-title">
+                <div>
+                  <p className="overline">TECHNOLOGIES IN OUR PROJECTS</p>
+                  <h2 id="technology-stack-title">Tools to explore</h2>
+                  <p>
+                    Current tools and methods used across the project demos.
+                  </p>
+                </div>
+                <div className="technology-tags">
+                  {technologyNames.map((technology) => (
+                    <span className="technology-tag" key={technology}>
+                      {technology}
                     </span>
-                  </div>
-                  <span className="stat-sparkline sparkline-violet" aria-hidden="true">
-                    <i /><i /><i /><i /><i /><i /><i /><i />
-                  </span>
-                </article>
-                <article className="stat-card">
-                  <span className="stat-icon stat-mint">
-                    <Icon name="book" size={18} />
-                  </span>
-                  <div>
-                    <p>Courses in progress</p>
-                    <strong>04</strong>
-                    <span className="stat-caption">Across 3 learning paths</span>
-                  </div>
-                  <span className="stat-sparkline sparkline-mint" aria-hidden="true">
-                    <i /><i /><i /><i /><i /><i /><i /><i />
-                  </span>
-                </article>
-                <article className="stat-card">
-                  <span className="stat-icon stat-amber">
-                    <Icon name="spark" size={18} />
-                  </span>
-                  <div>
-                    <p>Average score</p>
-                    <strong>86<span>%</span></strong>
-                    <span className="stat-caption">Top 12% of your cohort</span>
-                  </div>
-                  <span className="stat-sparkline sparkline-amber" aria-hidden="true">
-                    <i /><i /><i /><i /><i /><i /><i /><i />
-                  </span>
-                </article>
+                  ))}
+                </div>
               </section>
 
               <section className="project-library" id="projects">
@@ -1072,45 +1042,6 @@ export default function Dashboard() {
             </div>
 
             <aside className="secondary-column">
-              <section className="week-card">
-                <div className="side-card-heading">
-                  <div>
-                    <p className="overline">YOUR ACTIVITY</p>
-                    <h2>This week</h2>
-                  </div>
-                  <button className="mini-select" type="button">
-                    This week <Icon name="chevron" size={13} />
-                  </button>
-                </div>
-                <div className="activity-summary">
-                  <strong>8.2<span> hrs</span></strong>
-                  <span className="activity-change">↗ 18%</span>
-                  <span className="activity-caption">vs. last week</span>
-                </div>
-                <div
-                  className="activity-chart"
-                  role="img"
-                  aria-label="Weekly learning activity chart"
-                >
-                  {[42, 68, 51, 84, 58, 96, 36].map((height, index) => (
-                    <div className="chart-column" key={index}>
-                      <span className="chart-tooltip">
-                        {Math.round((height / 100) * 2.5 * 10) / 10}h
-                      </span>
-                      <i
-                        className={index === 5 ? "chart-bar chart-bar-today" : "chart-bar"}
-                        style={{ height: `${height}%` }}
-                      />
-                      <small>{["M", "T", "W", "T", "F", "S", "S"][index]}</small>
-                    </div>
-                  ))}
-                </div>
-                <div className="chart-legend">
-                  <span><i /> Daily learning time</span>
-                  <span>Goal: 10 hrs</span>
-                </div>
-              </section>
-
               <section className="tutor-card">
                 <div className="tutor-card-top">
                   <span className="tutor-spark">

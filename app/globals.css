@@ -975,6 +975,51 @@ select:focus-visible {
   gap: 11px;
 }
 
+.technology-stack {
+  display: grid;
+  gap: 15px;
+  padding: 17px 18px;
+  border: 1px solid #2b2d26;
+  border-radius: 11px;
+  background:
+    radial-gradient(ellipse at 93% 0%, rgb(211 242 122 / 7%), transparent 48%),
+    #111216;
+}
+
+.technology-stack h2 {
+  margin: 5px 0 0;
+  color: #edede8;
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: -0.045em;
+}
+
+.technology-stack p:not(.overline) {
+  margin: 4px 0 0;
+  color: #8d8e94;
+  font-size: 9px;
+}
+
+.technology-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.technology-tag {
+  display: inline-flex;
+  min-height: 27px;
+  align-items: center;
+  padding: 0 9px;
+  border: 1px solid #34362d;
+  border-radius: 7px;
+  background: #171813;
+  color: #c5d397;
+  font-size: 9px;
+  font-weight: 600;
+}
+
 .stat-card {
   position: relative;
   display: flex;
