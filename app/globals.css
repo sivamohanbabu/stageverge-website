@@ -81,9 +81,13 @@ select:focus-visible {
   width: var(--sidebar);
   flex-direction: column;
   justify-content: space-between;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   border-right: 1px solid var(--line-soft);
   background: #0c0d10;
   padding: 27px 16px 17px;
+  scrollbar-color: #303137 transparent;
+  scrollbar-width: thin;
 }
 
 .sidebar-top {
@@ -267,8 +271,55 @@ select:focus-visible {
   font-size: 10px;
 }
 
+.sidebar-page-progress {
+  margin: 14px 1px 0;
+  padding: 10px 10px 9px;
+  border: 1px solid #25262c;
+  border-radius: 9px;
+  background: #111216;
+}
+
+.sidebar-page-progress-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #777880;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.sidebar-page-progress-heading strong {
+  color: #c6d693;
+  font-size: 9px;
+  letter-spacing: 0;
+}
+
+.sidebar-page-progress-track {
+  height: 3px;
+  margin-top: 8px;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #2a2b30;
+}
+
+.sidebar-page-progress-track > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--lime);
+  box-shadow: 0 0 8px rgb(211 242 122 / 32%);
+  transition: width 180ms ease-out;
+}
+
+.sidebar-page-progress > p {
+  margin: 6px 0 0;
+  color: #777880;
+  font-size: 8px;
+}
+
 .sidebar-progress {
-  margin: 31px 1px 0;
+  margin: 18px 1px 0;
   padding: 14px 13px 13px;
   border: 1px solid #262820;
   border-radius: 12px;
@@ -383,6 +434,25 @@ select:focus-visible {
 .main-shell {
   min-height: 100vh;
   margin-left: var(--sidebar);
+}
+
+.page-scroll-progress {
+  position: fixed;
+  z-index: 12;
+  top: 64px;
+  right: 0;
+  left: var(--sidebar);
+  height: 2px;
+  background: #24251f;
+  pointer-events: none;
+}
+
+.page-scroll-progress > span {
+  display: block;
+  height: 100%;
+  background: var(--lime);
+  box-shadow: 0 0 8px rgb(211 242 122 / 42%);
+  transition: width 180ms ease-out;
 }
 
 .topbar {
@@ -2167,6 +2237,11 @@ select:focus-visible {
   .topbar {
     height: 58px;
     padding-inline: 16px;
+  }
+
+  .page-scroll-progress {
+    top: 57px;
+    left: 0;
   }
 
   .topbar-left,

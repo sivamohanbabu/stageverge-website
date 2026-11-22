@@ -431,6 +431,7 @@ export default function Dashboard() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [supportOpen, setSupportOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [pageProgress, setPageProgress] = useState(0);
   const [startedProjects, setStartedProjects] = useState<string[]>(() =>
     projects.filter((project) => project.progress > 0).map((project) => project.id),
   );
@@ -467,6 +468,32 @@ export default function Dashboard() {
 
     window.addEventListener("keydown", focusSearch);
     return () => window.removeEventListener("keydown", focusSearch);
+  }, []);
+
+  useEffect(() => {
+    let frame = 0;
+    const updateProgress = () => {
+      const maxScroll =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progress =
+        maxScroll > 0
+          ? Math.round((window.scrollY / maxScroll) * 100)
+          : 0;
+      setPageProgress(Math.max(0, Math.min(100, progress)));
+    };
+    const scheduleUpdate = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(updateProgress);
+    };
+
+    updateProgress();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+    };
   }, []);
 
   useEffect(() => {
@@ -548,6 +575,24 @@ export default function Dashboard() {
             ))}
           </nav>
 
+          <div className="sidebar-page-progress">
+            <div className="sidebar-page-progress-heading">
+              <span>PAGE PROGRESS</span>
+              <strong>{pageProgress}%</strong>
+            </div>
+            <div
+              className="sidebar-page-progress-track"
+              role="progressbar"
+              aria-label="Page scroll progress"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={pageProgress}
+            >
+              <span style={{ width: `${pageProgress}%` }} />
+            </div>
+            <p>Scroll or choose a section to explore</p>
+          </div>
+
           <div className="sidebar-progress">
             <div className="progress-card-heading">
               <span className="progress-icon">
@@ -588,6 +633,9 @@ export default function Dashboard() {
       </aside>
 
       <div className="main-shell">
+        <div className="page-scroll-progress" aria-hidden="true">
+          <span style={{ width: `${pageProgress}%` }} />
+        </div>
         <header className="topbar">
           <div className="topbar-left">
             <button
