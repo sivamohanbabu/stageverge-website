@@ -437,17 +437,6 @@ const tutorSiteReference = [
   ),
 ].join("\n\n");
 
-function Brand() {
-  return (
-    <a className="brand" href="#overview" aria-label="StageVerge Learn overview">
-      <span className="brand-mark">S</span>
-      <span className="brand-name">
-        stageverge<span>learn</span>
-      </span>
-    </a>
-  );
-}
-
 export default function Dashboard() {
   const [activeSection, setActiveSection] = useState("overview");
   const [search, setSearch] = useState("");
@@ -564,7 +553,6 @@ export default function Dashboard() {
     <div className="app-shell">
       <aside className={`sidebar${menuOpen ? " sidebar-open" : ""}`}>
         <div className="sidebar-top">
-          <Brand />
           <button
             className="icon-button sidebar-close"
             type="button"
@@ -573,16 +561,8 @@ export default function Dashboard() {
           >
             <Icon name="close" />
           </button>
-          <div className="workspace-switcher">
-            <span className="workspace-avatar">S</span>
-            <span className="workspace-copy">
-              <span>Workspace</span>
-              <strong>StageVerge Academy</strong>
-            </span>
-            <Icon name="chevron" size={15} />
-          </div>
-          <p className="nav-label">LEARNING SPACE</p>
-          <nav className="side-nav" aria-label="Learning space">
+          <p className="nav-label">MODULES</p>
+          <nav className="side-nav" aria-label="Modules">
             {navigation.map((item) => (
               <a
                 className={`side-nav-link${activeSection === item.id ? " active" : ""}`}
@@ -599,64 +579,6 @@ export default function Dashboard() {
               </a>
             ))}
           </nav>
-
-          <div className="sidebar-page-progress">
-            <div className="sidebar-page-progress-heading">
-              <span>PAGE PROGRESS</span>
-              <strong>{pageProgress}%</strong>
-            </div>
-            <div
-              className="sidebar-page-progress-track"
-              role="progressbar"
-              aria-label="Page scroll progress"
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-valuenow={pageProgress}
-            >
-              <span style={{ width: `${pageProgress}%` }} />
-            </div>
-            <p>Scroll or choose a section to explore</p>
-          </div>
-
-          <div className="sidebar-progress">
-            <div className="progress-card-heading">
-              <span className="progress-icon">
-                <Icon name="spark" size={15} />
-              </span>
-              <span>YOUR MOMENTUM</span>
-            </div>
-            <strong>5 day streak</strong>
-            <p>You&apos;re building a great habit. Keep it going.</p>
-            <div className="streak-days" aria-label="Five day learning streak">
-              {["M", "T", "W", "T", "F", "S", "S"].map((day, index) => (
-                <span className={index < 5 ? "complete" : ""} key={index}>
-                  {index < 5 ? "✓" : day}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="sidebar-bottom">
-          <button
-            className="side-nav-link"
-            type="button"
-            onClick={() => {
-              setMenuOpen(false);
-              setSupportOpen(true);
-            }}
-          >
-            <Icon name="spark" size={18} />
-            <span>AI tutor</span>
-          </button>
-          <div className="profile-card">
-            <span className="profile-avatar">AM</span>
-            <span className="profile-copy">
-              <strong>Alex Morgan</strong>
-              <span>Product builder</span>
-            </span>
-            <Icon name="chevron" size={15} />
-          </div>
         </div>
       </aside>
 
