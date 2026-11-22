@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "StageVerge — Real challenges. Verified builders. Working demos.",
+  title: "StageVerge Learn — Your learning, in motion.",
   description:
-    "StageVerge turns real business challenges into mentor-guided proof-of-concept demos built by verified student talent.",
+    "A hands-on learning space for curious minds and real-world builders.",
   openGraph: {
-    title: "StageVerge — Real challenges. Verified builders. Working demos.",
-    description:
-      "A B2B innovation platform connecting industry needs, academic talent, and working software.",
+    title: "StageVerge Learn — Your learning, in motion.",
+    description: "A hands-on learning space for curious minds and real-world builders.",
     type: "website",
   },
 };
