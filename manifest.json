@@ -1,0 +1,24 @@
+{
+  "name": "Stage Verge",
+  "short_name": "StageVerge",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0d111d",
+  "theme_color": "#121629",
+  "orientation": "portrait-primary",
+  "description": "Daily notifications, time management, alarms, anti-procrastination recommendations, UNESCO heritage sites, latest countries, and daily todo list.",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

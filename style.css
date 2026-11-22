@@ -1,0 +1,870 @@
+/* Stage Verge - Sony Xperia & Sony Bravia / PlayStation Master Clean Aesthetic */
+:root {
+  /* Sony Signature Palette: Deep OLED Black, Precision Gray, Sony Metallic Silver & Gold/Cyan accents */
+  --sony-bg-deep: #0a0b0e;
+  --sony-surface-1: #12141a;
+  --sony-surface-2: #181b24;
+  --sony-surface-elevated: #1f2330;
+  --sony-surface-accent: #272d3f;
+  
+  --sony-gold: #d4af37;
+  --sony-gold-glow: rgba(212, 175, 55, 0.25);
+  --sony-cyan: #00f0ff;
+  --sony-purple: #7058ff;
+  --sony-green: #00e676;
+  --sony-red: #ff334b;
+  
+  --sony-text-high: #f8fafc;
+  --sony-text-med: #9da8b6;
+  --sony-text-subtle: #64748b;
+  
+  --sony-border: rgba(255, 255, 255, 0.07);
+  --sony-border-focus: rgba(212, 175, 55, 0.4);
+  
+  --sony-font-display: -apple-system, BlinkMacSystemFont, "SST Pro", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --sony-radius-sm: 8px;
+  --sony-radius-md: 14px;
+  --sony-radius-lg: 20px;
+  
+  --bottom-nav-height: 68px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+body {
+  font-family: var(--sony-font-display);
+  background-color: #040507;
+  color: var(--sony-text-high);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  letter-spacing: -0.01em;
+}
+
+/* Sony Xperia Device Frame */
+.app-viewport {
+  width: 100%;
+  max-width: 440px;
+  height: 100vh;
+  background-color: var(--sony-bg-deep);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 480px) {
+  .app-viewport {
+    height: 94vh;
+    border-radius: 38px;
+    border: 3px solid #232733;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Sony Minimalist Header */
+.app-header {
+  height: 68px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--sony-border);
+  background: rgba(14, 16, 22, 0.92);
+  backdrop-filter: blur(20px);
+  z-index: 30;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-badge {
+  background: linear-gradient(145deg, #1f2433, #0f1118);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  color: var(--sony-gold);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  padding: 7px 11px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px var(--sony-gold-glow);
+  text-transform: uppercase;
+}
+
+.brand-title {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 2.2px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.brand-tagline {
+  font-size: 10px;
+  color: var(--sony-text-subtle);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  display: block;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.icon-btn {
+  background: var(--sony-surface-1);
+  border: 1px solid var(--sony-border);
+  color: var(--sony-text-high);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.icon-btn:hover {
+  background: var(--sony-surface-elevated);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.icon-btn.accent {
+  background: rgba(212, 175, 55, 0.12);
+  border-color: rgba(212, 175, 55, 0.4);
+  color: var(--sony-gold);
+}
+
+/* Sony Cinematic Banner */
+.banner {
+  background: linear-gradient(90deg, #171b26, #12141c);
+  border-left: 3px solid var(--sony-gold);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--sony-border);
+  animation: slideDown 0.3s ease-out;
+}
+
+.banner.hidden {
+  display: none;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.banner-icon {
+  font-size: 20px;
+}
+
+.banner-text strong {
+  font-size: 12px;
+  color: #fff;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: block;
+}
+
+.banner-text p {
+  font-size: 11px;
+  color: var(--sony-text-med);
+  margin-top: 2px;
+}
+
+.banner-close {
+  background: none;
+  border: none;
+  color: var(--sony-text-subtle);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Main Viewport Container */
+.app-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px;
+  padding-bottom: calc(var(--bottom-nav-height) + 24px);
+  scroll-behavior: smooth;
+}
+
+.app-main::-webkit-scrollbar {
+  width: 4px;
+}
+.app-main::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.tab-view {
+  display: none;
+}
+
+.tab-view.active {
+  display: block;
+  animation: sonyFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Sony Precision Cards */
+.card {
+  background: var(--sony-surface-1);
+  border: 1px solid var(--sony-border);
+  border-radius: var(--sony-radius-md);
+  padding: 18px;
+  margin-bottom: 16px;
+  position: relative;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.card-title-row h3 {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.section-subtext {
+  font-size: 12px;
+  color: var(--sony-text-subtle);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+/* Sony Badges & Tags */
+.badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.badge.gold {
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--sony-gold);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+.badge.blue {
+  background: rgba(0, 240, 255, 0.1);
+  color: var(--sony-cyan);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+.badge.red {
+  background: rgba(255, 51, 75, 0.12);
+  color: var(--sony-red);
+  border: 1px solid rgba(255, 51, 75, 0.35);
+}
+
+.counter-badge {
+  font-size: 10px;
+  color: var(--sony-gold);
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+/* Sony OLED Chrono Time Card */
+.time-card {
+  background: radial-gradient(circle at 50% 0%, #1a1e2d 0%, #0d0f15 100%);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.time-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.live-pill {
+  font-size: 9px;
+  background: #ff334b;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  animation: pulse 1.8s infinite;
+}
+
+.date-label {
+  font-size: 11px;
+  color: var(--sony-text-subtle);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.hero-time {
+  font-size: 42px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  margin: 10px 0;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
+}
+
+.time-drain-warning {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--sony-border);
+}
+
+.time-drain-warning p {
+  font-size: 11px;
+  color: var(--sony-gold);
+  margin-top: 6px;
+  line-height: 1.4;
+  letter-spacing: 0.3px;
+}
+
+/* Sony Deep Work Pomodoro */
+.focus-timer-card {
+  text-align: center;
+  border: 1px solid var(--sony-border);
+}
+
+.mode-tag {
+  font-size: 10px;
+  color: var(--sony-cyan);
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  padding: 3px 9px;
+  border-radius: 4px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.timer-display {
+  font-size: 54px;
+  font-weight: 200;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  margin: 14px 0;
+  letter-spacing: 3px;
+}
+
+.timer-progress-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+#timer-progress-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--sony-gold), var(--sony-cyan));
+  transition: width 1s linear;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.btn {
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 11px 20px;
+  border-radius: var(--sony-radius-sm);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #d4af37, #aa8520);
+  color: #0b0c10;
+  box-shadow: 0 4px 20px var(--sony-gold-glow);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-secondary {
+  background: var(--sony-surface-2);
+  color: var(--sony-text-high);
+  border: 1px solid var(--sony-border);
+}
+
+.btn-secondary:hover {
+  background: var(--sony-surface-elevated);
+}
+
+.btn-sm {
+  padding: 9px 14px;
+  font-size: 11px;
+}
+
+.timer-modes {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pill-btn {
+  background: var(--sony-surface-2);
+  border: 1px solid var(--sony-border);
+  color: var(--sony-text-med);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pill-btn.active, .pill-btn:hover {
+  background: var(--sony-surface-elevated);
+  color: var(--sony-gold);
+  border-color: var(--sony-gold);
+}
+
+/* Sony Form Controls & Inputs */
+.inline-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+input[type="time"], input[type="text"], select {
+  background: var(--sony-surface-2);
+  border: 1px solid var(--sony-border);
+  border-radius: var(--sony-radius-sm);
+  color: var(--sony-text-high);
+  padding: 10px 14px;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+input[type="time"]:focus, input[type="text"]:focus, select:focus {
+  border-color: var(--sony-gold);
+  background: var(--sony-surface-elevated);
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Sony Alarms Rows */
+.alarm-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--sony-surface-2);
+  padding: 12px 14px;
+  border-radius: var(--sony-radius-sm);
+  border: 1px solid var(--sony-border);
+  transition: all 0.2s ease;
+}
+
+.alarm-row:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.alarm-time {
+  font-size: 16px;
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.alarm-label {
+  font-size: 11px;
+  color: var(--sony-text-subtle);
+  margin-top: 2px;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: var(--sony-text-subtle);
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.delete-btn:hover {
+  color: var(--sony-red);
+}
+
+/* Sony Todo Controls */
+.todo-input-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.todo-form-extras {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-chips, .tab-sub-pills {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.chip, .sub-pill, .country-pill {
+  background: var(--sony-surface-2);
+  border: 1px solid var(--sony-border);
+  color: var(--sony-text-med);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.chip.active, .sub-pill.active, .country-pill.active {
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--sony-gold);
+  border-color: var(--sony-gold);
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--sony-surface-2);
+  padding: 12px 14px;
+  border-radius: var(--sony-radius-sm);
+  border: 1px solid var(--sony-border);
+  transition: all 0.2s ease;
+}
+
+.todo-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.todo-checkbox {
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  accent-color: var(--sony-gold);
+}
+
+.todo-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sony-text-high);
+  word-break: break-word;
+}
+
+.todo-title.done {
+  text-decoration: line-through;
+  color: var(--sony-text-subtle);
+}
+
+.todo-meta {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-top: 3px;
+}
+
+/* Sony Advice & Recommendations */
+.rec-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rec-card {
+  background: var(--sony-surface-2);
+  border: 1px solid var(--sony-border);
+  border-radius: var(--sony-radius-sm);
+  padding: 14px;
+  display: flex;
+  gap: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.rec-card:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.rec-icon {
+  font-size: 22px;
+  padding: 8px;
+  background: var(--sony-surface-elevated);
+  border-radius: 6px;
+  height: fit-content;
+}
+
+.rec-card h4 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.rec-card p {
+  font-size: 11px;
+  color: var(--sony-text-med);
+  line-height: 1.5;
+}
+
+.rec-tag {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--sony-gold);
+  margin-top: 8px;
+}
+
+.audit-banner {
+  display: flex;
+  justify-content: space-around;
+  background: #0d0f15;
+  border: 1px solid var(--sony-border);
+  padding: 16px;
+  border-radius: var(--sony-radius-sm);
+  margin-bottom: 14px;
+}
+
+.audit-stat {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--sony-green);
+  letter-spacing: 1px;
+}
+
+.stat-label {
+  font-size: 10px;
+  color: var(--sony-text-subtle);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.guideline-list {
+  list-style: none;
+  font-size: 11px;
+  color: var(--sony-text-med);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Sony Search Inputs */
+.search-box-wrap {
+  margin-bottom: 12px;
+}
+
+.search-box-wrap input {
+  width: 100%;
+}
+
+/* Sony Feed Items (UNESCO & Countries) */
+.cards-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feed-item {
+  background: var(--sony-surface-2);
+  border: 1px solid var(--sony-border);
+  border-radius: var(--sony-radius-sm);
+  padding: 16px;
+  transition: all 0.25s ease;
+}
+
+.feed-item:hover {
+  background: var(--sony-surface-elevated);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.feed-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.feed-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #fff;
+}
+
+.feed-subtitle {
+  font-size: 11px;
+  color: var(--sony-gold);
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+
+.feed-desc {
+  font-size: 12px;
+  color: var(--sony-text-med);
+  line-height: 1.5;
+}
+
+.feed-meta-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--sony-border);
+  font-size: 10px;
+  color: var(--sony-text-subtle);
+}
+
+.feed-meta-row strong {
+  color: #fff;
+}
+
+/* Sony Minimalist Bottom Navigation */
+.bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--bottom-nav-height);
+  background: rgba(10, 11, 14, 0.95);
+  backdrop-filter: blur(24px);
+  border-top: 1px solid var(--sony-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 40;
+}
+
+.nav-item {
+  background: none;
+  border: none;
+  color: var(--sony-text-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  flex: 1;
+  height: 100%;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.nav-icon {
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.nav-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.nav-item.active {
+  color: var(--sony-gold);
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--sony-gold);
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--sony-gold);
+}
+
+.nav-item.active .nav-icon {
+  transform: translateY(-2px);
+}
+
+/* Smooth Sony Motion */
+@keyframes sonyFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}

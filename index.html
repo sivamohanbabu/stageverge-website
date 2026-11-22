@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Stage Verge - All-in-One Life & Time Mastery</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#121629">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Simulated Mobile Frame -->
+  <div class="app-viewport">
+    <!-- Top Status Bar & App Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo-badge">STAGE VERGE</div>
+        <div>
+          <h1 class="brand-title">STAGE VERGE</h1>
+          <span class="brand-tagline">MASTER SERIES &bull; TIME HORIZON</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="notif-perm-btn" class="icon-btn" title="Daily Notifications">🔔</button>
+        <button id="quick-alarm-btn" class="icon-btn accent" title="Add Alarm">⏰</button>
+      </div>
+    </header>
+
+    <!-- Daily Notification Banner -->
+    <div id="daily-notification-banner" class="banner hidden">
+      <div class="banner-content">
+        <span class="banner-icon">🎯</span>
+        <div class="banner-text">
+          <strong id="banner-title">Morning Focus Alert</strong>
+          <p id="banner-desc">Review your high-priority items & stop time drains!</p>
+        </div>
+      </div>
+      <button class="banner-close" id="banner-close">✕</button>
+    </div>
+
+    <!-- Main Content Area with Dynamic Views -->
+    <main class="app-main">
+      <!-- 1. TIME MANAGEMENT & FOCUS VIEW -->
+      <section id="view-focus" class="tab-view active">
+        <div class="card time-card">
+          <div class="time-header">
+            <span class="live-pill">LIVE CLOCK</span>
+            <span id="current-date" class="date-label">Today</span>
+          </div>
+          <div id="current-time" class="hero-time">12:00:00 PM</div>
+          <div class="time-drain-warning">
+            <span class="badge red">ANTI-PROCRASTINATION</span>
+            <p id="time-waste-tip">"You don't lack time, you lack focus. Don't waste your golden morning hours!"</p>
+          </div>
+        </div>
+
+        <!-- Pomodoro / Focus Timer -->
+        <div class="card focus-timer-card">
+          <div class="card-title-row">
+            <h3>⏱️ Deep Focus Engine</h3>
+            <span id="timer-mode-tag" class="mode-tag">Deep Work</span>
+          </div>
+          <div class="timer-display" id="pomodoro-display">25:00</div>
+          <div class="timer-progress-bar"><div id="timer-progress-fill"></div></div>
+          <div class="timer-controls">
+            <button id="timer-toggle-btn" class="btn btn-primary">Start Focus Session</button>
+            <button id="timer-reset-btn" class="btn btn-secondary">Reset</button>
+          </div>
+          <div class="timer-modes">
+            <button class="pill-btn active" data-time="25" data-mode="Deep Work">25m Work</button>
+            <button class="pill-btn" data-time="50" data-mode="Ultra Deep">50m Ultra</button>
+            <button class="pill-btn" data-time="5" data-mode="Quick Refresh">5m Break</button>
+            <button class="pill-btn" data-time="15" data-mode="Recharge">15m Break</button>
+          </div>
+        </div>
+
+        <!-- Daily Alarm Hub -->
+        <div class="card">
+          <div class="card-title-row">
+            <h3>⏰ Daily Alarms & Wakeups</h3>
+            <span class="counter-badge" id="alarm-count">0 set</span>
+          </div>
+          <form id="new-alarm-form" class="inline-form">
+            <input type="time" id="alarm-time-input" required>
+            <input type="text" id="alarm-label-input" placeholder="e.g. Wake up / Review Goals" required>
+            <button type="submit" class="btn btn-primary btn-sm">+ Add</button>
+          </form>
+          <div id="alarms-list" class="list-container">
+            <!-- Dynamic alarms -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. DAILY TODO LIST VIEW -->
+      <section id="view-todos" class="tab-view">
+        <div class="card">
+          <div class="card-title-row">
+            <h3>📝 Daily Todo & Priority Matrix</h3>
+            <span id="todo-stats" class="counter-badge">0 / 0 completed</span>
+          </div>
+          <p class="section-subtext">Zero time-wasting: focus strictly on high leverage tasks first.</p>
+          
+          <form id="todo-form" class="todo-input-form">
+            <input type="text" id="todo-text-input" placeholder="What will you conquer next?" required>
+            <div class="todo-form-extras">
+              <select id="todo-priority-select">
+                <option value="high">🔥 High Impact</option>
+                <option value="medium" selected>⚡ Medium</option>
+                <option value="low">🌱 Low</option>
+              </select>
+              <select id="todo-category-select">
+                <option value="Work">💼 Work</option>
+                <option value="Learning">📚 Learning</option>
+                <option value="Health">💪 Health</option>
+                <option value="Life">🌟 Life</option>
+              </select>
+              <button type="submit" class="btn btn-primary">Add Task</button>
+            </div>
+          </form>
+
+          <div class="filter-chips">
+            <button class="chip active" data-filter="all">All</button>
+            <button class="chip" data-filter="active">Pending</button>
+            <button class="chip" data-filter="completed">Done</button>
+          </div>
+
+          <div id="todos-container" class="list-container">
+            <!-- Dynamic Todo items -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. DAILY RECOMMENDATIONS VIEW -->
+      <section id="view-recs" class="tab-view">
+        <div class="card hero-gradient">
+          <div class="card-title-row">
+            <h3>💡 Daily Smart Recommendations</h3>
+            <button id="refresh-rec-btn" class="icon-refresh" title="Fresh daily insights">🔄</button>
+          </div>
+          <p class="section-subtext">Curated time-management hacks, mental models & routine optimizers.</p>
+          <div id="recommendations-container" class="rec-grid">
+            <!-- Dynamic recommendation cards -->
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title-row">
+            <h3>📊 Time Waste Tracker & Audit</h3>
+          </div>
+          <div class="audit-banner">
+            <div class="audit-stat">
+              <span class="stat-number" id="saved-hours">3.5 hrs</span>
+              <span class="stat-label">Estimated Time Saved Today</span>
+            </div>
+            <div class="audit-stat">
+              <span class="stat-number">92%</span>
+              <span class="stat-label">Productive Focus Rate</span>
+            </div>
+          </div>
+          <ul class="guideline-list">
+            <li>⛔ <strong>Rule 1:</strong> No social media checking before 12:00 PM.</li>
+            <li>⏳ <strong>Rule 2:</strong> Two-Minute Rule: If a task takes &lt; 2 minutes, execute immediately.</li>
+            <li>📵 <strong>Rule 3:</strong> Keep phone in DND mode during Pomodoro focus blocks.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4. UNESCO WORLD HERITAGE SITES VIEW -->
+      <section id="view-unesco" class="tab-view">
+        <div class="card">
+          <div class="card-title-row">
+            <h3>🏛️ UNESCO World Heritage Explorer</h3>
+            <span class="badge gold">Heritage & Culture</span>
+          </div>
+          <p class="section-subtext">Discover breathtaking UNESCO sites across India and the globe.</p>
+          
+          <div class="search-box-wrap">
+            <input type="text" id="unesco-search" placeholder="Search site, country or state...">
+          </div>
+
+          <div class="tab-sub-pills">
+            <button class="sub-pill active" data-unesco-type="all">All Sites</button>
+            <button class="sub-pill" data-unesco-type="India">India (42 Sites)</button>
+            <button class="sub-pill" data-unesco-type="Global">Global Wonders</button>
+          </div>
+
+          <div id="unesco-cards-list" class="cards-feed">
+            <!-- Dynamic UNESCO cards -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. INDIA & LATEST COUNTRIES VIEW -->
+      <section id="view-countries" class="tab-view">
+        <div class="card">
+          <div class="card-title-row">
+            <h3>🇮🇳 India Pulse & Latest Countries</h3>
+            <span class="badge blue">Geopolitics & World</span>
+          </div>
+          <p class="section-subtext">Up-to-date quick reference of latest countries, India key indicators & world affairs.</p>
+
+          <div class="search-box-wrap">
+            <input type="text" id="country-search" placeholder="Search country, capital, continent...">
+          </div>
+
+          <div class="tab-sub-pills">
+            <button class="country-pill active" data-filter="all">All Countries</button>
+            <button class="country-pill" data-filter="recent">Latest Formed / Recognized</button>
+            <button class="country-pill" data-filter="india">India Deep-Dive</button>
+          </div>
+
+          <div id="countries-cards-list" class="cards-feed">
+            <!-- Dynamic Country Cards -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Navigation Bar (Standard Mobile Android Pattern) -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-target="view-focus">
+        <span class="nav-icon">⏱️</span>
+        <span class="nav-label">Focus</span>
+      </button>
+      <button class="nav-item" data-target="view-todos">
+        <span class="nav-icon">📋</span>
+        <span class="nav-label">Todos</span>
+      </button>
+      <button class="nav-item" data-target="view-recs">
+        <span class="nav-icon">💡</span>
+        <span class="nav-label">Advice</span>
+      </button>
+      <button class="nav-item" data-target="view-unesco">
+        <span class="nav-icon">🏛️</span>
+        <span class="nav-label">UNESCO</span>
+      </button>
+      <button class="nav-item" data-target="view-countries">
+        <span class="nav-icon">🌍</span>
+        <span class="nav-label">Nations</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Audio Tone for Alarms & Timer -->
+  <audio id="alarm-sound" preload="auto"></audio>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
