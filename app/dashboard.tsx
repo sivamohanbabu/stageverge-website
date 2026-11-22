@@ -413,6 +413,30 @@ const datasetSources = [
   },
 ];
 
+const tutorSiteReference = [
+  "COURSE CATALOG",
+  ...courses.map(
+    (course) =>
+      `${course.title} (${course.category}) — ${course.instructor}; ${course.lessons}; ${course.duration}; ${course.progress}% progress.`,
+  ),
+  "COMPLETE PROJECT DEMOS",
+  ...projects.map((project) =>
+    [
+      `${project.title} — ${project.category}, ${project.level}, ${project.duration}, ${project.modules} modules.`,
+      project.description,
+      `Brief: ${project.brief}`,
+      `Tools: ${project.stack.join(", ")}`,
+      `Learning outcomes: ${project.outcomes.join(" ")}`,
+      `Milestones: ${project.milestones.join(" ")}`,
+      `Current sample progress: ${project.progress}%.`,
+    ].join("\n"),
+  ),
+  "DATASET SOURCES",
+  ...datasetSources.map(
+    (source) => `${source.name} (${source.label}): ${source.description} ${source.url}`,
+  ),
+].join("\n\n");
+
 function Brand() {
   return (
     <a className="brand" href="#overview" aria-label="StageVerge Learn overview">
@@ -463,6 +487,7 @@ export default function Dashboard() {
       if (event.key === "Escape") {
         setSelectedProject(null);
         setMenuOpen(false);
+        setSupportOpen(false);
       }
     }
 
@@ -616,7 +641,10 @@ export default function Dashboard() {
           <button
             className="side-nav-link"
             type="button"
-            onClick={() => setSupportOpen(true)}
+            onClick={() => {
+              setMenuOpen(false);
+              setSupportOpen(true);
+            }}
           >
             <Icon name="spark" size={18} />
             <span>AI tutor</span>
@@ -1324,7 +1352,11 @@ export default function Dashboard() {
         </div>
       )}
 
-      <OllamaSupport open={supportOpen} onOpenChange={setSupportOpen} />
+      <OllamaSupport
+        open={supportOpen}
+        onOpenChange={setSupportOpen}
+        siteReference={tutorSiteReference}
+      />
     </div>
   );
 }

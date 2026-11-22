@@ -1768,6 +1768,10 @@ select:focus-visible {
   padding: 0;
 }
 
+.support-launcher.launcher-open {
+  display: none;
+}
+
 .launcher-x {
   font-size: 24px;
   font-weight: 400;
@@ -1777,16 +1781,18 @@ select:focus-visible {
 .support-panel {
   position: fixed;
   z-index: 39;
-  right: 25px;
-  bottom: 81px;
+  top: 65px;
+  right: 0;
+  bottom: 0;
   display: flex;
-  width: min(380px, calc(100vw - 32px));
-  height: min(560px, calc(100vh - 115px));
-  min-height: 390px;
+  width: min(420px, calc(100vw - var(--sidebar)));
+  min-height: 0;
   flex-direction: column;
   overflow: hidden;
   border: 1px solid #34362d;
-  border-radius: 15px;
+  border-right: 0;
+  border-bottom: 0;
+  border-radius: 15px 0 0 0;
   background: #111216;
   box-shadow: 0 24px 80px rgb(0 0 0 / 55%);
   animation: support-enter 160ms ease-out;
@@ -1795,11 +1801,11 @@ select:focus-visible {
 @keyframes support-enter {
   from {
     opacity: 0;
-    transform: translateY(8px) scale(0.98);
+    transform: translateX(8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateX(0);
   }
 }
 
@@ -1861,6 +1867,16 @@ select:focus-visible {
 .model-status.online i {
   background: var(--lime);
   box-shadow: 0 0 6px rgb(211 242 122 / 45%);
+}
+
+.support-context-badge {
+  padding: 4px 6px;
+  border: 1px solid #34372d;
+  border-radius: 5px;
+  color: #abb68a;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
 }
 
 .support-close {
@@ -1943,6 +1959,7 @@ select:focus-visible {
   flex-direction: column;
   gap: 14px;
   overflow-y: auto;
+  min-height: 0;
   padding: 15px 13px;
   scrollbar-color: #393a40 transparent;
   scrollbar-width: thin;
@@ -2021,6 +2038,78 @@ select:focus-visible {
 .suggested-prompts button:hover {
   border-color: #555d3c;
   color: var(--lime);
+}
+
+.support-faqs {
+  margin-left: 30px;
+  overflow: hidden;
+  border: 1px solid #2c2d33;
+  border-radius: 8px;
+  background: #15161a;
+}
+
+.support-faqs summary {
+  display: flex;
+  min-height: 32px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 9px;
+  color: #d3d4ca;
+  font-size: 9px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.support-faqs summary::-webkit-details-marker {
+  display: none;
+}
+
+.support-faqs summary::after {
+  color: var(--lime);
+  content: "+";
+  font-size: 14px;
+}
+
+.support-faqs[open] summary::after {
+  content: "−";
+}
+
+.support-faqs summary span {
+  margin-left: auto;
+  color: #777880;
+  font-size: 8px;
+  font-weight: 400;
+}
+
+.support-faq-list {
+  display: grid;
+  max-height: 190px;
+  gap: 1px;
+  overflow-y: auto;
+  padding: 0 6px 6px;
+}
+
+.support-faq-list button {
+  padding: 7px 6px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #aeb0a7;
+  font-size: 8px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.support-faq-list button:hover:not(:disabled) {
+  background: #202119;
+  color: var(--lime);
+}
+
+.support-faq-list button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .typing-indicator {
@@ -2473,10 +2562,10 @@ select:focus-visible {
   }
 
   .support-panel {
-    right: 10px;
-    bottom: 68px;
-    width: min(380px, calc(100vw - 20px));
-    height: min(560px, calc(100dvh - 82px));
+    top: 58px;
+    right: 0;
+    bottom: 0;
+    width: min(420px, 100vw);
   }
 }
 

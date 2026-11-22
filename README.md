@@ -21,8 +21,12 @@ Open [http://localhost:3000](http://localhost:3000) to view the site. Run
 ## Local Ollama learning support
 
 The AI tutor streams responses directly from Ollama in the learner's browser.
-Chat messages are not sent through the StageVerge site. Install Ollama, then
-download a model such as `llama3.2`:
+It opens in a right-side panel and includes quick FAQ answers that work without
+Ollama. For chat responses, each request includes the rendered page text, full
+course and project catalog (including project briefs), and FAQ as context.
+This grounds the model's responses; it does not fine-tune or train the model.
+Chat messages are sent directly to the learner's local Ollama, not through the
+StageVerge site. Install Ollama, then download a model such as `llama3.2`:
 
 ```bash
 ollama pull llama3.2
