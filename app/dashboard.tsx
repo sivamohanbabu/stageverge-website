@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import OllamaSupport from "./ollama-support";
+import NewsFeed from "./news-feed";
 
 type IconName =
   | "grid"
@@ -10,6 +11,7 @@ type IconName =
   | "layers"
   | "database"
   | "people"
+  | "news"
   | "settings"
   | "search"
   | "bell"
@@ -68,6 +70,12 @@ function Icon({
         <path d="M16 20v-1.5a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4V20" />
         <circle cx="9.5" cy="7.5" r="3.5" />
         <path d="M17 11a3.5 3.5 0 0 0 0-7M21 20v-1.5a4 4 0 0 0-3-3.87" />
+      </>
+    ),
+    news: (
+      <>
+        <path d="M4 5h16v15H4z" />
+        <path d="M8 9h8M8 12h8M8 15h5" />
       </>
     ),
     settings: (
@@ -134,6 +142,7 @@ const navigation: { label: string; id: string; icon: IconName }[] = [
   { label: "Overview", id: "overview", icon: "grid" },
   { label: "Project demos", id: "projects", icon: "layers" },
   { label: "Dataset sources", id: "datasets", icon: "database" },
+  { label: "News feed", id: "news", icon: "news" },
   { label: "My learning", id: "learning", icon: "book" },
   { label: "Career labs", id: "labs", icon: "flask" },
   { label: "Community", id: "community", icon: "people" },
@@ -1102,6 +1111,8 @@ export default function Dashboard() {
             </div>
 
             <aside className="secondary-column">
+              <NewsFeed />
+
               <section className="tutor-card">
                 <div className="tutor-card-top">
                   <span className="tutor-spark">

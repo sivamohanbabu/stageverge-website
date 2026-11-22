@@ -1566,6 +1566,132 @@ select:focus-visible {
   gap: 13px;
 }
 
+.news-feed-card {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background:
+    radial-gradient(ellipse at 92% 0%, rgb(211 242 122 / 6%), transparent 50%),
+    #111216;
+}
+
+.news-feed-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.news-feed-heading h2 {
+  margin: 3px 0 0;
+  color: #edede8;
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}
+
+.news-feed-refresh {
+  min-height: 25px;
+  padding: 0 7px;
+  border: 1px solid #34362d;
+  border-radius: 6px;
+  background: #171813;
+  color: #beca96;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.news-feed-refresh:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.news-feed-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 9px 0 2px;
+  color: #a6a780;
+  font-size: 8px;
+}
+
+.news-feed-live::before {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 6px rgb(211 242 122 / 45%);
+  content: "";
+}
+
+.news-feed-error {
+  margin: 6px 0;
+  color: #c8a47f;
+  font-size: 8px;
+  line-height: 1.5;
+}
+
+.news-feed-stories {
+  display: grid;
+  max-height: 300px;
+  overflow-y: auto;
+  scrollbar-color: #393a40 transparent;
+  scrollbar-width: thin;
+}
+
+.news-feed-story {
+  padding: 10px 0 9px;
+  border-top: 1px solid #27282e;
+}
+
+.news-feed-story > a {
+  display: block;
+  color: #d6d7d1;
+  font-size: 9px;
+  font-weight: 550;
+  line-height: 1.5;
+}
+
+.news-feed-story > a:hover {
+  color: var(--lime);
+}
+
+.news-feed-story > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  margin-top: 5px;
+  color: #777880;
+  font-size: 7px;
+}
+
+.news-feed-story > div > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.news-feed-story time {
+  flex: 0 0 auto;
+  font-variant-numeric: tabular-nums;
+}
+
+.news-feed-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 9px;
+  color: #b7c58d;
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.news-feed-more:hover {
+  color: var(--lime);
+}
+
 .week-card,
 .tutor-card,
 .upcoming-card {

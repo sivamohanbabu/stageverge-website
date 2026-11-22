@@ -54,6 +54,10 @@ The Dataset sources section links to [Kaggle Datasets](https://www.kaggle.com/da
 [OpenML](https://www.openml.org/search?type=data), and [Data.gov](https://data.gov/).
 Check each dataset's license, attribution, and privacy requirements before use.
 
+The News feed module loads recent AI stories from the public Hacker News search
+API and refreshes every 15 minutes. If the feed is unavailable, it shows clearly
+labeled sample AI topics with links to Hugging Face, arXiv, and GitHub.
+
 ## Deployment
 
 The workflow in `.github/workflows/static.yml` builds the Next.js static export
