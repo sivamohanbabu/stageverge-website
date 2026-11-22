@@ -73,6 +73,67 @@ select:focus-visible {
   min-height: 100vh;
 }
 
+.app-loader {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgb(211 242 122 / 7%), transparent 37%),
+    var(--page);
+  animation: loader-enter 180ms ease-out both;
+}
+
+.app-loader-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-loader-brand .brand-mark {
+  width: 43px;
+  height: 43px;
+  border-radius: 13px;
+  font-size: 23px;
+}
+
+.app-loader-brand .brand-name {
+  font-size: 21px;
+}
+
+.app-loader-brand .brand-name span {
+  font-size: 17px;
+}
+
+.app-loader-spinner {
+  width: 25px;
+  height: 25px;
+  border: 2px solid #34372d;
+  border-top-color: var(--lime);
+  border-radius: 50%;
+  animation: app-loader-spin 750ms linear infinite;
+}
+
+.app-loader > p {
+  margin: 0;
+  color: #a4a59b;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+@keyframes loader-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes app-loader-spin {
+  to { transform: rotate(360deg); }
+}
+
 .sidebar {
   position: fixed;
   z-index: 20;

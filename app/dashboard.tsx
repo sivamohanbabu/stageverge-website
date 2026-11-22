@@ -437,18 +437,27 @@ const tutorSiteReference = [
   ),
 ].join("\n\n");
 
-function Brand() {
+function BrandIdentity() {
   return (
-    <a className="brand" href="#overview" aria-label="StageVerge Learn overview">
+    <>
       <span className="brand-mark">S</span>
       <span className="brand-name">
         stageverge<span>learn</span>
       </span>
+    </>
+  );
+}
+
+function Brand() {
+  return (
+    <a className="brand" href="#overview" aria-label="StageVerge Learn overview">
+      <BrandIdentity />
     </a>
   );
 }
 
 export default function Dashboard() {
+  const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState("overview");
   const [search, setSearch] = useState("");
   const [projectCategory, setProjectCategory] = useState("All projects");
@@ -463,6 +472,7 @@ export default function Dashboard() {
   const searchRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    const loadingTimer = window.setTimeout(() => setIsLoading(false), 900);
     setToday(
       new Date()
         .toLocaleDateString("en-US", {
@@ -492,7 +502,10 @@ export default function Dashboard() {
     }
 
     window.addEventListener("keydown", focusSearch);
-    return () => window.removeEventListener("keydown", focusSearch);
+    return () => {
+      window.clearTimeout(loadingTimer);
+      window.removeEventListener("keydown", focusSearch);
+    };
   }, []);
 
   useEffect(() => {
@@ -562,6 +575,15 @@ export default function Dashboard() {
 
   return (
     <div className="app-shell">
+      {isLoading && (
+        <div className="app-loader" role="status" aria-label="Loading StageVerge Learn">
+          <div className="app-loader-brand">
+            <BrandIdentity />
+          </div>
+          <span className="app-loader-spinner" aria-hidden="true" />
+          <p>Your learning, in motion.</p>
+        </div>
+      )}
       <aside className={`sidebar${menuOpen ? " sidebar-open" : ""}`}>
         <div className="sidebar-top">
           <Brand />
