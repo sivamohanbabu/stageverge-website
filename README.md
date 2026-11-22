@@ -2,8 +2,9 @@
 
 StageVerge Learn is an enterprise-style learning management dashboard built
 with Next.js and TypeScript. It is a frontend prototype with a static export
-for GitHub Pages; learner accounts, course records, and progress are currently
-sample data.
+for GitHub Pages. The project library currently contains six illustrative
+project demos; learner accounts, course records, and progress are sample data,
+not connected to a live project database.
 
 ## Local development
 
@@ -35,6 +36,13 @@ select one.
 
 If Ollama is not running or the origin is not allowed, the dashboard remains
 usable and the tutor shows a connection status and retry action.
+
+## Project library
+
+The Project demos section provides category filters, search, project overviews,
+learning outcomes, tools, milestones, and an in-session “My learning” list.
+Connect a project API or content management system to replace the sample demo
+catalog before using it as a production course library.
 
 ## Deployment
 

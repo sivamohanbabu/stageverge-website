@@ -7,6 +7,7 @@ type IconName =
   | "grid"
   | "book"
   | "flask"
+  | "layers"
   | "people"
   | "settings"
   | "search"
@@ -46,6 +47,12 @@ function Icon({
       <>
         <path d="M9 3h6M10 3v6.2L5.5 17a2 2 0 0 0 1.7 3h9.6a2 2 0 0 0 1.7-3L14 9.2V3" />
         <path d="M8 15h8" />
+      </>
+    ),
+    layers: (
+      <>
+        <path d="m12 3 9 5-9 5-9-5 9-5Z" />
+        <path d="m3 12 9 5 9-5M3 16l9 5 9-5" />
       </>
     ),
     people: (
@@ -117,6 +124,7 @@ function Icon({
 
 const navigation: { label: string; id: string; icon: IconName }[] = [
   { label: "Overview", id: "overview", icon: "grid" },
+  { label: "Project demos", id: "projects", icon: "layers" },
   { label: "My learning", id: "learning", icon: "book" },
   { label: "Career labs", id: "labs", icon: "flask" },
   { label: "Community", id: "community", icon: "people" },
@@ -155,6 +163,196 @@ const courses = [
   },
 ];
 
+type Project = {
+  id: string;
+  title: string;
+  category: string;
+  level: string;
+  duration: string;
+  modules: number;
+  progress: number;
+  art: string;
+  artLabel: string;
+  description: string;
+  brief: string;
+  stack: string[];
+  outcomes: string[];
+  milestones: string[];
+};
+
+const projects: Project[] = [
+  {
+    id: "research-assistant",
+    title: "Build a local AI research assistant",
+    category: "AI & ML",
+    level: "Intermediate",
+    duration: "4.5 hours",
+    modules: 6,
+    progress: 38,
+    art: "research",
+    artLabel: "LOCAL AI",
+    description:
+      "Create a private, source-aware assistant that can search and explain a library of documents.",
+    brief:
+      "Students and teams lose time searching through long reports. Build a local-first assistant that indexes documents, retrieves useful passages, and answers with clear source references.",
+    stack: ["Next.js", "Ollama", "Embeddings", "RAG"],
+    outcomes: [
+      "Prepare and chunk source documents for retrieval.",
+      "Connect a local language model with Ollama.",
+      "Build a grounded answer flow with source references.",
+    ],
+    milestones: [
+      "Map the user problem and define a useful research workflow.",
+      "Build document ingestion and semantic search.",
+      "Connect Ollama and return cited answers.",
+      "Test quality, privacy, and edge cases.",
+    ],
+  },
+  {
+    id: "maker-marketplace",
+    title: "Launch a marketplace for makers",
+    category: "Web development",
+    level: "Beginner",
+    duration: "3 hours",
+    modules: 5,
+    progress: 72,
+    art: "marketplace",
+    artLabel: "MAKER MARKET",
+    description:
+      "Design a welcoming storefront that helps independent creators showcase and sell their work.",
+    brief:
+      "Independent makers need a simple way to present their work and reach buyers. Create a responsive marketplace experience with clear discovery, creator profiles, and product storytelling.",
+    stack: ["React", "TypeScript", "CSS", "Figma"],
+    outcomes: [
+      "Structure a browsable catalog and product detail experience.",
+      "Build reusable, accessible interface components.",
+      "Use responsive layouts to support mobile shoppers.",
+    ],
+    milestones: [
+      "Define creator and buyer needs.",
+      "Create the marketplace information architecture.",
+      "Build the catalog and product detail screens.",
+      "Review the experience on desktop and mobile.",
+    ],
+  },
+  {
+    id: "support-insights",
+    title: "Turn support tickets into insights",
+    category: "Data & analytics",
+    level: "Intermediate",
+    duration: "3.5 hours",
+    modules: 5,
+    progress: 0,
+    art: "insights",
+    artLabel: "SIGNAL / NOISE",
+    description:
+      "Explore service patterns in a sample ticket dataset and turn them into a useful team dashboard.",
+    brief:
+      "A growing support team needs to spot recurring customer problems early. Analyze a sample ticket dataset, identify common themes, and present an actionable view of service health.",
+    stack: ["Python", "Pandas", "SQL", "Data viz"],
+    outcomes: [
+      "Clean and inspect a real-world shaped dataset.",
+      "Identify recurring issues and meaningful trends.",
+      "Design a dashboard around decisions, not decoration.",
+    ],
+    milestones: [
+      "Inspect and clean the sample ticket data.",
+      "Explore volume, resolution time, and topic trends.",
+      "Build a concise support-health dashboard.",
+      "Present two evidence-backed recommendations.",
+    ],
+  },
+  {
+    id: "onboarding-flow",
+    title: "Design an onboarding flow that converts",
+    category: "Product design",
+    level: "Beginner",
+    duration: "2.5 hours",
+    modules: 4,
+    progress: 0,
+    art: "onboarding",
+    artLabel: "FIRST VALUE",
+    description:
+      "Help a new user reach their first useful outcome with less friction and more confidence.",
+    brief:
+      "A product has strong sign-ups but few users complete setup. Rework the onboarding journey to reduce uncertainty, show value sooner, and give the team clear validation signals.",
+    stack: ["Figma", "User research", "Prototyping", "Analytics"],
+    outcomes: [
+      "Translate user friction into testable design opportunities.",
+      "Map and prototype a focused onboarding journey.",
+      "Choose product signals that measure activation.",
+    ],
+    milestones: [
+      "Review a sample funnel and user feedback.",
+      "Identify the highest-impact point of friction.",
+      "Prototype a clearer first-run experience.",
+      "Define an experiment to evaluate the redesign.",
+    ],
+  },
+  {
+    id: "campus-connect",
+    title: "Create a campus community hub",
+    category: "Web development",
+    level: "Intermediate",
+    duration: "4 hours",
+    modules: 6,
+    progress: 0,
+    art: "community",
+    artLabel: "FIND YOUR PEOPLE",
+    description:
+      "Build a small event and interest hub that makes it easier for students to find their people.",
+    brief:
+      "Students miss events and struggle to find peers with shared interests. Prototype a community hub with searchable events, interest groups, and a simple RSVP journey.",
+    stack: ["Next.js", "TypeScript", "React", "UX"],
+    outcomes: [
+      "Model useful events, groups, and attendee states.",
+      "Build a searchable, keyboard-friendly discovery flow.",
+      "Create clear empty, loading, and success states.",
+    ],
+    milestones: [
+      "Choose a target student group and core use case.",
+      "Design the event and interest discovery experience.",
+      "Build event cards, filters, and RSVP states.",
+      "Test the main journey with a peer.",
+    ],
+  },
+  {
+    id: "finance-dashboard",
+    title: "Build a personal finance dashboard",
+    category: "Data & analytics",
+    level: "Beginner",
+    duration: "3 hours",
+    modules: 5,
+    progress: 0,
+    art: "finance",
+    artLabel: "MONEY, MADE CLEAR",
+    description:
+      "Turn a month of sample transactions into an approachable view of spending and savings.",
+    brief:
+      "People often know they want to save but have a hard time seeing where their money goes. Build a clear dashboard that groups spending, tracks a savings goal, and avoids overwhelming the user.",
+    stack: ["React", "JavaScript", "Charts", "Product"],
+    outcomes: [
+      "Transform transaction records into meaningful categories.",
+      "Visualize spending patterns and a savings target.",
+      "Present personal financial information with care.",
+    ],
+    milestones: [
+      "Review and categorize the sample transactions.",
+      "Sketch a useful monthly overview.",
+      "Build spending and savings visualizations.",
+      "Check readability and accessible color contrast.",
+    ],
+  },
+];
+
+const projectCategories = [
+  "All projects",
+  "AI & ML",
+  "Web development",
+  "Data & analytics",
+  "Product design",
+];
+
 function Brand() {
   return (
     <a className="brand" href="#overview" aria-label="StageVerge Learn overview">
@@ -169,8 +367,13 @@ function Brand() {
 export default function Dashboard() {
   const [activeSection, setActiveSection] = useState("overview");
   const [search, setSearch] = useState("");
+  const [projectCategory, setProjectCategory] = useState("All projects");
   const [menuOpen, setMenuOpen] = useState(false);
   const [supportOpen, setSupportOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [startedProjects, setStartedProjects] = useState<string[]>(() =>
+    projects.filter((project) => project.progress > 0).map((project) => project.id),
+  );
   const [today, setToday] = useState("");
   const searchRef = useRef<HTMLInputElement>(null);
 
@@ -196,11 +399,23 @@ export default function Dashboard() {
         event.preventDefault();
         searchRef.current?.focus();
       }
+      if (event.key === "Escape") {
+        setSelectedProject(null);
+        setMenuOpen(false);
+      }
     }
 
     window.addEventListener("keydown", focusSearch);
     return () => window.removeEventListener("keydown", focusSearch);
   }, []);
+
+  useEffect(() => {
+    if (!selectedProject) return;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedProject]);
 
   const filteredCourses = useMemo(
     () =>
@@ -211,6 +426,27 @@ export default function Dashboard() {
       ),
     [search],
   );
+
+  const filteredProjects = useMemo(
+    () =>
+      projects.filter((project) => {
+        const matchesCategory =
+          projectCategory === "All projects" ||
+          project.category === projectCategory;
+        const matchesSearch =
+          `${project.title} ${project.category} ${project.level} ${project.description} ${project.stack.join(" ")}`
+            .toLowerCase()
+            .includes(search.toLowerCase());
+        return matchesCategory && matchesSearch;
+      }),
+    [projectCategory, search],
+  );
+
+  function startProject(projectId: string) {
+    setStartedProjects((current) =>
+      current.includes(projectId) ? current : [...current, projectId],
+    );
+  }
 
   return (
     <div className="app-shell">
@@ -317,10 +553,10 @@ export default function Dashboard() {
               <input
                 ref={searchRef}
                 type="search"
-                placeholder="Search courses..."
+                placeholder="Search projects & courses..."
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
-                aria-label="Search courses"
+                aria-label="Search projects and courses"
               />
               <kbd>/</kbd>
             </label>
@@ -361,31 +597,35 @@ export default function Dashboard() {
                 <div className="featured-copy">
                   <span className="featured-label">
                     <span className="live-dot" />
-                    PICK UP WHERE YOU LEFT OFF
+                    PROJECT DEMO · MENTOR-GUIDED BUILD
                   </span>
                   <h2 id="featured-title">
-                    Product thinking
+                    Build an AI
                     <br />
-                    for builders<span>.</span>
+                    research assistant<span>.</span>
                   </h2>
                   <p>
-                    Turn customer problems into products people can&apos;t wait
-                    to use.
+                    Turn a library of documents into a private, source-aware
+                    learning companion with Ollama.
                   </p>
                   <div className="featured-meta">
                     <span>
-                      <Icon name="book" size={15} /> Lesson 8 of 12
+                      <Icon name="book" size={15} /> 6 project modules
                     </span>
                     <span className="meta-divider" />
                     <span>
-                      <Icon name="clock" size={15} /> 18 min left
+                      <Icon name="clock" size={15} /> 38% complete
                     </span>
                   </div>
-                  <a className="featured-cta" href="#learning">
-                    Continue learning <Icon name="arrow" size={16} />
-                  </a>
+                  <button
+                    className="featured-cta"
+                    type="button"
+                    onClick={() => setSelectedProject(projects[0])}
+                  >
+                    Explore project demo <Icon name="arrow" size={16} />
+                  </button>
                   <div className="featured-progress">
-                    <span style={{ width: "68%" }} />
+                    <span style={{ width: "38%" }} />
                   </div>
                 </div>
                 <div className="featured-art" aria-hidden="true">
@@ -396,12 +636,12 @@ export default function Dashboard() {
                     <span className="core-ring" />
                     <span className="core-dot" />
                   </div>
-                  <span className="art-tag art-tag-top">DISCOVER</span>
-                  <span className="art-tag art-tag-bottom">BUILD · LEARN · GROW</span>
+                  <span className="art-tag art-tag-top">LOCAL AI</span>
+                  <span className="art-tag art-tag-bottom">BUILD · TEST · SHIP</span>
                   <span className="art-spark art-spark-one">✳</span>
                   <span className="art-spark art-spark-two">✦</span>
                 </div>
-                <span className="featured-index">01 / YOUR LEARNING PATH</span>
+                <span className="featured-index">01 / FEATURED PROJECT DEMO</span>
               </section>
 
               <section className="stats-grid" aria-label="Learning statistics">
@@ -448,11 +688,132 @@ export default function Dashboard() {
                 </article>
               </section>
 
+              <section className="project-library" id="projects">
+                <div className="section-title-row project-library-heading">
+                  <div>
+                    <p className="overline">PROJECT LIBRARY · SAMPLE DEMOS</p>
+                    <h2>Explore project demos</h2>
+                    <p className="project-library-subtitle">
+                      Guided builds across AI, web development, data, and product design.
+                    </p>
+                  </div>
+                  <span className="catalog-count">
+                    {filteredProjects.length} OF {projects.length} PROJECTS
+                  </span>
+                </div>
+
+                <div className="project-filters" aria-label="Filter project demos">
+                  {projectCategories.map((category) => (
+                    <button
+                      className={`filter-chip${projectCategory === category ? " selected" : ""}`}
+                      type="button"
+                      key={category}
+                      aria-pressed={projectCategory === category}
+                      onClick={() => setProjectCategory(category)}
+                    >
+                      {category}
+                      {category === "All projects" && (
+                        <span>{projects.length}</span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+
+                {filteredProjects.length > 0 ? (
+                  <div className="project-grid">
+                    {filteredProjects.map((project, index) => {
+                      const started = startedProjects.includes(project.id);
+                      return (
+                        <article className="project-card" key={project.id}>
+                          <button
+                            className={`project-visual project-visual-${project.art}`}
+                            type="button"
+                            onClick={() => setSelectedProject(project)}
+                            aria-label={`Open project overview: ${project.title}`}
+                          >
+                            <span className="project-visual-top">
+                              <span>STAGEVERGE · PROJECT {String(index + 1).padStart(2, "0")}</span>
+                              <span className="project-open-icon">
+                                <Icon name="arrow" size={14} />
+                              </span>
+                            </span>
+                            <span className="project-visual-orbit" />
+                            <span className="project-visual-core">
+                              {project.art === "research"
+                                ? "AI"
+                                : project.art === "marketplace"
+                                  ? "M"
+                                  : project.art === "insights"
+                                    ? "↗"
+                                    : project.art === "onboarding"
+                                      ? "01"
+                                      : project.art === "community"
+                                        ? "◌"
+                                        : "$"}
+                            </span>
+                            <span className="project-visual-caption">
+                              {project.artLabel}
+                            </span>
+                          </button>
+                          <div className="project-card-content">
+                            <div className="project-card-meta">
+                              <span className="project-category">
+                                {project.category}
+                              </span>
+                              <span className="project-level">{project.level}</span>
+                            </div>
+                            <h3>{project.title}</h3>
+                            <p>{project.description}</p>
+                            <div className="project-stack">
+                              {project.stack.slice(0, 3).map((skill) => (
+                                <span key={skill}>{skill}</span>
+                              ))}
+                            </div>
+                            {started && (
+                              <div className="project-progress">
+                                <span>
+                                  <i
+                                    style={{
+                                      width: `${Math.max(project.progress, 4)}%`,
+                                    }}
+                                  />
+                                </span>
+                                <small>
+                                  {project.progress > 0
+                                    ? `${project.progress}% complete`
+                                    : "Added to your learning"}
+                                </small>
+                              </div>
+                            )}
+                            <div className="project-card-footer">
+                              <span>
+                                {project.modules} modules <i>·</i> {project.duration}
+                              </span>
+                              <button
+                                type="button"
+                                onClick={() => setSelectedProject(project)}
+                              >
+                                Overview <Icon name="arrow" size={14} />
+                              </button>
+                            </div>
+                          </div>
+                        </article>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="empty-search project-empty">
+                    No project demos match this search and category. Try another
+                    filter.
+                  </div>
+                )}
+              </section>
+
               <section className="learning-section" id="learning">
                 <div className="section-title-row">
                   <div>
                     <p className="overline">YOUR CURRICULUM</p>
-                    <h2>Keep your momentum</h2>
+                    <h2>Courses to support your builds</h2>
                   </div>
                   <a className="subtle-link" href="#learning">
                     View all courses <Icon name="arrow" size={15} />
@@ -507,10 +868,42 @@ export default function Dashboard() {
                     ))
                   ) : (
                     <div className="empty-search">
-                      No courses match “{search}”. Try a different search.
+                      No courses match “{search}”. Your project demos are
+                      filtered above.
                     </div>
                   )}
                 </div>
+                {startedProjects.length > 0 && (
+                  <div className="active-projects">
+                    <div className="active-projects-heading">
+                      <span>YOUR ACTIVE BUILDS</span>
+                      <span>{startedProjects.length}</span>
+                    </div>
+                    {projects
+                      .filter((project) => startedProjects.includes(project.id))
+                      .map((project) => (
+                        <button
+                          className="active-project-row"
+                          type="button"
+                          key={project.id}
+                          onClick={() => setSelectedProject(project)}
+                        >
+                          <span className={`active-project-icon project-visual-${project.art}`}>
+                            {project.artLabel.slice(0, 2)}
+                          </span>
+                          <span className="active-project-title">
+                            <strong>{project.title}</strong>
+                            <small>
+                              {project.progress > 0
+                                ? `${project.progress}% complete`
+                                : "Ready to start"}
+                            </small>
+                          </span>
+                          <Icon name="arrow" size={15} />
+                        </button>
+                      ))}
+                  </div>
+                )}
               </section>
 
               <section className="lab-section" id="labs">
@@ -654,6 +1047,128 @@ export default function Dashboard() {
           </footer>
         </main>
       </div>
+
+      {selectedProject && (
+        <div
+          className="project-modal-backdrop"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setSelectedProject(null);
+          }}
+        >
+          <section
+            className="project-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-modal-title"
+          >
+            <div
+              className={`project-modal-art project-visual-${selectedProject.art}`}
+              aria-hidden="true"
+            >
+              <span className="project-modal-art-index">STAGEVERGE · PROJECT DEMO</span>
+              <span className="project-modal-art-orbit" />
+              <span className="project-modal-art-core">
+                {selectedProject.artLabel}
+              </span>
+              <span className="project-modal-art-footer">
+                BRIEF <i /> BUILD <i /> SHARE
+              </span>
+            </div>
+            <button
+              className="project-modal-close"
+              type="button"
+              onClick={() => setSelectedProject(null)}
+              aria-label="Close project overview"
+            >
+              <Icon name="close" size={18} />
+            </button>
+            <div className="project-modal-body">
+              <div className="project-modal-heading">
+                <div className="project-modal-badges">
+                  <span>{selectedProject.category}</span>
+                  <span>{selectedProject.level}</span>
+                  <span>GUIDED PROJECT</span>
+                </div>
+                <h2 id="project-modal-title">{selectedProject.title}</h2>
+                <p>{selectedProject.description}</p>
+                <div className="project-modal-facts">
+                  <span><Icon name="book" size={15} /> {selectedProject.modules} modules</span>
+                  <span><Icon name="clock" size={15} /> {selectedProject.duration}</span>
+                  <span><Icon name="layers" size={15} /> Portfolio-ready demo</span>
+                </div>
+              </div>
+
+              <div className="project-modal-grid">
+                <div className="project-modal-main-copy">
+                  <p className="modal-section-label">THE PROJECT BRIEF</p>
+                  <p className="project-brief">{selectedProject.brief}</p>
+                  <h3>Your build milestones</h3>
+                  <ol className="milestone-list">
+                    {selectedProject.milestones.map((milestone, index) => (
+                      <li key={milestone}>
+                        <span>{String(index + 1).padStart(2, "0")}</span>
+                        <p>{milestone}</p>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+
+                <aside className="project-modal-aside">
+                  <h3>What you&apos;ll learn</h3>
+                  <ul className="outcome-list">
+                    {selectedProject.outcomes.map((outcome) => (
+                      <li key={outcome}>
+                        <span>✓</span>
+                        {outcome}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="modal-stack-block">
+                    <span className="modal-section-label">TOOLS & SKILLS</span>
+                    <div className="project-stack modal-project-stack">
+                      {selectedProject.stack.map((skill) => (
+                        <span key={skill}>{skill}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="project-outcome-note">
+                    <span className="outcome-note-icon"><Icon name="spark" size={16} /></span>
+                    <span>
+                      <strong>Made to be shared</strong>
+                      Finish with a working demo and a clear story for your portfolio.
+                    </span>
+                  </div>
+                  <button
+                    className="modal-start-button"
+                    type="button"
+                    onClick={() => {
+                      if (startedProjects.includes(selectedProject.id)) {
+                        setSelectedProject(null);
+                        setActiveSection("learning");
+                        document
+                          .getElementById("learning")
+                          ?.scrollIntoView({ behavior: "smooth" });
+                      } else {
+                        startProject(selectedProject.id);
+                      }
+                    }}
+                  >
+                    {startedProjects.includes(selectedProject.id)
+                      ? "Continue in My learning"
+                      : "Add to My learning"}
+                    <Icon name="arrow" size={16} />
+                  </button>
+                  {startedProjects.includes(selectedProject.id) && (
+                    <p className="project-added-note" aria-live="polite">
+                      This project is in your learning list.
+                    </p>
+                  )}
+                </aside>
+              </div>
+            </div>
+          </section>
+        </div>
+      )}
 
       <OllamaSupport open={supportOpen} onOpenChange={setSupportOpen} />
     </div>
