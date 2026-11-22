@@ -362,6 +362,22 @@ export default function OllamaSupport({
             </label>
           )}
 
+          <details className="support-faqs">
+            <summary>Quick FAQs <span>{FAQS.length} answers</span></summary>
+            <div className="support-faq-list">
+              {FAQS.map((faq) => (
+                <button
+                  key={faq.question}
+                  type="button"
+                  disabled={sending}
+                  onClick={() => answerFAQ(faq)}
+                >
+                  {faq.question}
+                </button>
+              ))}
+            </div>
+          </details>
+
           <div className="support-messages" ref={listRef} aria-live="polite">
             <div className="message-row assistant-row">
               <span className="message-avatar"><SparkIcon size={14} /></span>
@@ -387,21 +403,6 @@ export default function OllamaSupport({
                 </div>
               </div>
             </div>
-            <details className="support-faqs">
-              <summary>Quick FAQs <span>{FAQS.length} answers</span></summary>
-              <div className="support-faq-list">
-                {FAQS.map((faq) => (
-                  <button
-                    key={faq.question}
-                    type="button"
-                    disabled={sending}
-                    onClick={() => answerFAQ(faq)}
-                  >
-                    {faq.question}
-                  </button>
-                ))}
-              </div>
-            </details>
             {messages.map((message) => (
               <div
                 className={`message-row ${message.role === "user" ? "user-row" : "assistant-row"}`}
