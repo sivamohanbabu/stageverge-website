@@ -437,6 +437,17 @@ const tutorSiteReference = [
   ),
 ].join("\n\n");
 
+function Brand() {
+  return (
+    <a className="brand" href="#overview" aria-label="StageVerge Learn overview">
+      <span className="brand-mark">S</span>
+      <span className="brand-name">
+        stageverge<span>learn</span>
+      </span>
+    </a>
+  );
+}
+
 export default function Dashboard() {
   const [activeSection, setActiveSection] = useState("overview");
   const [search, setSearch] = useState("");
@@ -553,6 +564,7 @@ export default function Dashboard() {
     <div className="app-shell">
       <aside className={`sidebar${menuOpen ? " sidebar-open" : ""}`}>
         <div className="sidebar-top">
+          <Brand />
           <button
             className="icon-button sidebar-close"
             type="button"
