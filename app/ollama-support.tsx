@@ -217,8 +217,9 @@ export default function OllamaSupport({
               content: [
                 SYSTEM_PROMPT,
                 "WEBSITE PAGE CONTENT:",
-                document.querySelector(".dashboard-main")?.innerText.trim() ||
-                  "Page content is unavailable.",
+                document
+                  .querySelector<HTMLElement>(".dashboard-main")
+                  ?.innerText.trim() || "Page content is unavailable.",
                 "COMPLETE COURSE AND PROJECT CATALOG, INCLUDING PROJECT BRIEFS:",
                 siteReference,
                 "FAQ:",
