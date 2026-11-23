@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "StageVerge Reader — A quiet space to learn.",
+  title: "StageVerge Learn — Your learning, in motion.",
   description:
-    "A calm, private PDF reading space with page navigation, zoom, contrast, and local audio.",
+    "A hands-on learning space for curious minds and real-world builders.",
   openGraph: {
-    title: "StageVerge Reader — A quiet space to learn.",
-    description: "Read local PDFs with a little more focus. Your files stay on your device.",
+    title: "StageVerge Learn — Your learning, in motion.",
+    description: "A hands-on learning space for curious minds and real-world builders.",
     type: "website",
   },
 };
