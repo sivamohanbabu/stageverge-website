@@ -1,5 +1,5 @@
-import Dashboard from "./dashboard";
+import PdfReader from "./pdf-reader";
 
 export default function Home() {
-  return <Dashboard />;
+  return <PdfReader />;
 }

@@ -1,10 +1,9 @@
 # StageVerge Website
 
-StageVerge Learn is an enterprise-style learning management dashboard built
-with Next.js and TypeScript. It is a frontend prototype with a static export
-for GitHub Pages. The project library currently contains six illustrative
-project demos; learner accounts, course records, and progress are sample data,
-not connected to a live project database.
+StageVerge Reader is a private, client-side PDF reading experience built with
+Next.js and TypeScript. It is a static export for GitHub Pages. Choose a PDF
+and optional audio file from your device; both are used locally in your browser
+and are not uploaded or bundled with the site.
 
 ## Local development
 
@@ -18,45 +17,18 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) to view the site. Run
 `npm run build` to generate the static site in `out/`.
 
-## Local Ollama learning support
+## Reading locally
 
-The AI tutor streams responses directly from Ollama in the learner's browser.
-It opens in a right-side panel and includes quick FAQ answers that work without
-Ollama. For chat responses, each request includes the rendered page text, full
-course and project catalog (including project briefs), and FAQ as context.
-This grounds the model's responses; it does not fine-tune or train the model.
-Chat messages are sent directly to the learner's local Ollama, not through the
-StageVerge site. Install Ollama, then download a model such as `llama3.2`:
+Use **Open a PDF** to select a document on your device. The reader embeds the
+browser's built-in PDF viewer, with controls for direct page navigation, zoom,
+and display contrast. The page field and previous/next buttons complement the
+viewer toolbar; use the built-in toolbar for the document's page count and text
+search.
 
-```bash
-ollama pull llama3.2
-```
-
-Allow the site origin in Ollama's `OLLAMA_ORIGINS` environment variable, then
-restart Ollama. For local development, allow `http://localhost:3000`; for the
-deployed site, also allow `https://stageverge.com`. The tutor checks
-`http://localhost:11434/api/tags` for installed models and lets the learner
-select one.
-
-If Ollama is not running or the origin is not allowed, the dashboard remains
-usable and the tutor shows a connection status and retry action.
-
-## Project library
-
-The Project demos section provides category filters, search, project overviews,
-learning outcomes, tools, milestones, and an in-session “My learning” list.
-Connect a project API or content management system to replace the sample demo
-catalog before using it as a production course library.
-
-The Dataset sources section links to [Kaggle Datasets](https://www.kaggle.com/datasets),
-[Hugging Face Datasets](https://huggingface.co/datasets), the [UCI Machine Learning Repository](https://archive.ics.uci.edu/datasets),
-[Google Dataset Search](https://datasetsearch.research.google.com/),
-[OpenML](https://www.openml.org/search?type=data), and [Data.gov](https://data.gov/).
-Check each dataset's license, attribution, and privacy requirements before use.
-
-The News feed module loads recent AI stories from the public Hacker News search
-API and refreshes every 15 minutes. If the feed is unavailable, it shows clearly
-labeled sample AI topics with links to Hugging Face, arXiv, and GitHub.
+Use **Add a local audio file** to play an audio track alongside your reading.
+Only select audio you have permission to use. The PDF and audio are loaded as
+local browser object URLs and are never sent to a server. Selecting another
+document or leaving the page releases the temporary local URL.
 
 ## Deployment
 
